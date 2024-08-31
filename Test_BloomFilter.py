@@ -81,6 +81,30 @@ def test_uniformity(hash_values: List, size: int):
         print('The hash values follow an uniform distribution, so we fail to reject the Null Hypothesis')
 
 
+count = 100
+length = 5
+size = 10
 
+random_strings = random_strings_generator(count, length)
+hash_values = hash(random_strings, size)
+test_uniformity(hash_values, size)
+
+
+count = 1000
+length = 10
+size = 1000
+
+random_strings = random_strings_generator(count, length)
+hash_values = hash(random_strings, size)
+test_uniformity(hash_values, size)
+
+
+count = 100000
+length = 10
+size = 1000
+
+random_strings = random_strings_generator(count, length)
+hash_values = hash(random_strings, size)
+test_uniformity(hash_values, size)
 
 
