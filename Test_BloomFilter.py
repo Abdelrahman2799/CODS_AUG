@@ -57,6 +57,28 @@ def test_search(exp_count: int, fp_rate: float, words_length:int=10, size:int=10
 
     return observed_fp_rate
 
+def test_natural_language_words(exp_count: int, fp_rate: float) -> None:
+    #Test hash functions with natural language words
+    words = ['apple', 'banana', 'tomato', 'orange', 'watermelon']
+    bf = BloomFilter(exp_count, fp_rate)
+    for word in words:
+        bf.insert(word)
+    for word in words:
+        assert bf.search(word), f'"{word}" was not found even though it was inserted'
+    
+def test_dna_seq(exp_count:int, fp_rate:float, seq_length:int=10, num_seq:int=100) -> None:
+    #Test hash functions using DNA sequences
+    dna_sequences = generate_DNA_sequences(num_seq, seq_length)
+    bloom = BloomFilter(exp_count, fp_rate)
+    for seq in dna_sequences:
+        bloom.insert(seq)
+    for seq in dna_sequences:
+        assert bloom.search(seq), f'"{seq}" was not found even though it was inserted'
+
+def generate_DNA_sequences(count:int, length:int) -> list:
+    #Generate unique random DNA sequences
+    return [''.join(random.choices('ACGT', k=length)) for _ in range(count)]
+
 # Examples for insertion test:
 test_insert(exp_count=100, fp_rate=0.01, words_length=10)
 test_insert(exp_count=1000, fp_rate=0.01, words_length=15)
@@ -71,7 +93,12 @@ test_search(exp_count=1000, fp_rate=0.05, words_length=10, size=1000)
 test_search(exp_count=10000, fp_rate=0.01, words_length=10, size=10000)
 test_search(exp_count=10000, fp_rate=0.01, words_length=10, size=100000)
 
-
+test_natural_language_words(10000, 0.01)
+test_natural_language_words(1000, 0.05)
+test_natural_language_words(100, 0.01)
+test_dna_seq(10000, 0.01)
+test_dna_seq(100, 0.01)
+test_dna_seq(1000, 0.05)
 
 def random_strings_generator(n: int, length: int) -> List:
   #"""Generate a list of unique random strings."""
@@ -130,5 +157,9 @@ size = 1000
 random_strings = random_strings_generator(count, length)
 hash_values = hash(random_strings, size)
 test_uniformity(hash_values, size)
+
+
+
+
 
 
