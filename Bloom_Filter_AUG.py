@@ -13,6 +13,19 @@ class BloomFilter:
         self.hfunctions = self.compute_hash_count(self.size, exp_count)
         self.strings_count = 0
 
+    def insert(self, string: str) -> None:
+        for i in range(self.hfunctions):
+            set = mmh3.hash(string, i) % self.size
+            self.array[set] = 1
+        self.strings_count += 1
+
+    def search(self, string: str)-> bool:
+        for i in range(self.hfunctions):
+            set = mmh3.hash(string, i) % self.size
+            if not self.array[set]:
+                return False
+        return True
+    
     def count_strings(self) -> int:
         return self.strings_count
 
