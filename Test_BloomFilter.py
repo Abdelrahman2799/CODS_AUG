@@ -50,6 +50,13 @@ test_search(exp_count=1000, fp_rate=0.05, words_length=10, size=1000)
 test_search(exp_count=10000, fp_rate=0.01, words_length=10, size=10000)
 test_search(exp_count=10000, fp_rate=0.01, words_length=10, size=100000)
 
+def random_strings_generator(n: int, length: int) -> List:
+    words = set()
+    while len(words) < n:
+        word = ''.join(random.choices(string.ascii_lowercase, k=length))
+        words.add(word)
+    return list(words)
+
 
 
 
