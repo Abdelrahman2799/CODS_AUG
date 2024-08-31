@@ -11,7 +11,12 @@ class BloomFilter:
         self.array = bitarray(self.size)
         self.array.setall(0)
         self.hfunctions = self.compute_hash_count(self.size, exp_count)
-        
+        self.strings_count = 0
+
+    def count_strings(self) -> int:
+        return self.strings_count
+
+    
     def compute_size(self, count, prob) -> int:
         size = - (count * math.log(prob)) / (math.log(2) ** 2)
         return int(size)
