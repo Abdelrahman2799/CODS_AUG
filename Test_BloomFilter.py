@@ -1,4 +1,4 @@
-from Bloom_filter_AUG import BloomFilter
+from Bloom_Filter_AUG import BloomFilter
 import string
 from typing import List, Tuple
 import random
