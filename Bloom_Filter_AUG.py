@@ -27,7 +27,7 @@ class BloomFilter:
         self.strings_count = 0
 
     def insert(self, string: str) -> None:
-         """insert string to the bloom filter"""
+         # """insert string to the bloom filter"""
         for i in range(self.hfunctions):
             #use hash functions to generate corresponding positions in the array
             set = mmh3.hash(string, i) % self.size
