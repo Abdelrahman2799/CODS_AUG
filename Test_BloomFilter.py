@@ -38,6 +38,18 @@ def test_search(exp_count: int, fp_rate: float, words_length:int=10, size:int=10
 
     return observed_fp_rate
 
+test_insert(exp_count=100, fp_rate=0.01, words_length=10)
+test_insert(exp_count=1000, fp_rate=0.01, words_length=15)
+test_insert(exp_count=10000, fp_rate=0.05, words_length=10)
+test_insert(exp_count=10000, fp_rate=0.01, words_length=5)
+
+test_search(exp_count=100, fp_rate=0.01, words_length=10, size=100)
+test_search(exp_count=1000, fp_rate=0.01, words_length=10, size=1000)
+test_search(exp_count=1000, fp_rate=0.01, words_length=15, size=1000)
+test_search(exp_count=1000, fp_rate=0.05, words_length=10, size=1000)
+test_search(exp_count=10000, fp_rate=0.01, words_length=10, size=10000)
+test_search(exp_count=10000, fp_rate=0.01, words_length=10, size=100000)
+
 
 
 
