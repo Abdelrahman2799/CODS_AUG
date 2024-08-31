@@ -60,6 +60,26 @@ def random_strings_generator(n: int, length: int) -> List:
         words.add(word)
     return list(words)
 
+def hash(words: List, size: int) -> List:
+    hash_values = []
+    for word in words:
+        hash_value = mmh3.hash(word) % size
+        hash_values.append(hash_value)
+    return hash_values
+
+def test_uniformity(hash_values: List, size: int):
+    observed_freq, _ = np.histogram(hash_values, bins=size, range=(0, size))
+    expected_freq = [len(hash_values) / size] * size
+    test_stat, p_value = chi2_contingency([observed_freq, expected_freq])[:2]
+
+    print(f"Chi Squared test statistic: {test_stat}")
+    print(f'P-value: {p_value}')
+    
+    if p_value < 0.05:
+        print('The hash values do not follow an uniform distribution, so we reject the Null Hypothesis')
+    else:
+        print('The hash values follow an uniform distribution, so we fail to reject the Null Hypothesis')
+
 
 
 
