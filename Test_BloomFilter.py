@@ -2,6 +2,9 @@ from Bloom_filter import BloomFilter
 import string
 from typing import List, Tuple
 import random
+from scipy.stats import chi2_contingency
+import numpy as np
+import mmh3
 
 def unique_words_generator(n: int, length: int) -> List:
     words = set()
