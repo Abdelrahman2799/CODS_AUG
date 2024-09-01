@@ -1,0 +1,12 @@
+SLURM_JOB_ID: 62266203
+SLURM_JOB_USER: vsc36370
+SLURM_JOB_ACCOUNT: lp_h_ds_2023_2024
+SLURM_JOB_NAME: bloom_benchmark
+SLURM_CLUSTER_NAME: wice
+SLURM_JOB_PARTITION: batch
+SLURM_NNODES: 1
+SLURM_NODELIST: s28c11n1
+SLURM_JOB_CPUS_PER_NODE: 1
+Date: Sun Sep  1 18:58:28 CEST 2024
+Walltime: 00-02:00:00
+========================================================================
