@@ -132,5 +132,4 @@ plt.ylim(0, 80)
 
 plt.tight_layout()
 plt.show()
-
-
+plt.savefig('Benchmark_AUG.png')
